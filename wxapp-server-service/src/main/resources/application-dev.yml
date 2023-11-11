@@ -1,6 +1,6 @@
 dubbo:
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://127.0.0.1:2181/dubbo3
   protocol:
     name: tri
     port: 5050
