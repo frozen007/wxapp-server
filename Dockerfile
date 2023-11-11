@@ -2,7 +2,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/zmy-repo/openjdk-jre:openjdk-17-jre
 
 # 将当前目录下的jar包复制到docker容器的/目录下
-ADD wxapp-server-service/target/wxapp-server-service-0.0.1-SNAPSHOT.jar.jar /wxapp-server.jar
+ADD wxapp-server-service/target/wxapp-server-service-0.0.1-SNAPSHOT.jar /wxapp-server.jar
 
 # 指定docker容器启动时运行jar包
 ENTRYPOINT ["java", "-Xms128m", "-Xmx200m", "-Xloggc:/var/gc.log", "-jar","/wxapp-server.jar"]
