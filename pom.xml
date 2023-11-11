@@ -9,7 +9,7 @@
     <name>wxapp-server</name>
     <description>weixin app server</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dubbo.version>3.2.7</dubbo.version>
@@ -56,6 +56,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <name>MyCo Internal Repository</name>
+            <url>https://packages.aliyun.com/maven/repository/2422071-release-t6uoJw/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <name>MyCo Internal Repository</name>
+            <url>https://packages.aliyun.com/maven/repository/2422071-snapshot-gjE1Si/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>

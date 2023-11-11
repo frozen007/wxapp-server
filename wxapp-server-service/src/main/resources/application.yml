@@ -7,4 +7,4 @@ dubbo:
     address: zookeeper://zookeeper-0.zk-inner-service.default.svc.cluster.local:2181/dubbo3
   protocol:
     name: tri
-    port: 50051
+    port: 5050

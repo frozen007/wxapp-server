@@ -1,0 +1,27 @@
+kind: pipeline
+type: exec
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+trigger:
+  event:
+
+steps:
+  - name: build
+    commands:
+      - mvn compile package -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+  - name: image
+    commands:
+      - docker build -t myz/wxapp-server:1.0 .
+
+  - name: put-version
+    commands:
+      - sed "s/__LABEL_VERSION__/v${DRONE_BUILD_NUMBER}/g" wxapp-server-deploy.yaml > wxapp-server-deploy-version.yaml
+
+  - name: deploy
+    commands:
+      - kubectl apply -f wxapp-server-deploy-version.yaml
