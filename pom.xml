@@ -14,7 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dubbo.version>3.2.7</dubbo.version>
         <spring-boot.version>2.7.17</spring-boot.version>
-<!--        <zookeeper_version>3.9.1</zookeeper_version>-->
+        <zookeeper_version>3.9.1</zookeeper_version>
     </properties>
 
     <modules>
@@ -22,13 +22,13 @@
         <module>wxapp-server-service</module>
     </modules>
 
-<!--    <dependencies>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.zookeeper</groupId>-->
-<!--            <artifactId>zookeeper</artifactId>-->
-<!--            <version>${zookeeper_version}</version>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper_version}</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
