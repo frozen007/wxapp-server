@@ -19,3 +19,17 @@ spec:
           ports:
             - containerPort: 5050
               name: wxapp-server
+          volumeMounts:
+            - name: localtime-config
+              mountPath: /etc/localtime
+            - name: timezone-config
+              mountPath: /etc/timezone
+      volumes:
+        - name: localtime-config
+          #挂载主机localtime
+          hostPath:
+            path: /etc/localtime
+        - name: timezone-config
+          #挂载主机timezone
+          hostPath:
+            path: /etc/timezone

@@ -1,6 +1,6 @@
 package com.myz.wxapp.wxappserver.dubbo.consumer;
 
-import com.myz.wxapp.wxappserver.dubbo.api.DemoService;
+import com.myz.wxapp.api.DemoService;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 

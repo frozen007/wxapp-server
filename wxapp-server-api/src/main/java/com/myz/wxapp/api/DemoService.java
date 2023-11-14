@@ -1,4 +1,4 @@
-package com.myz.wxapp.wxappserver.dubbo.api;
+package com.myz.wxapp.api;
 
 public interface DemoService {
 

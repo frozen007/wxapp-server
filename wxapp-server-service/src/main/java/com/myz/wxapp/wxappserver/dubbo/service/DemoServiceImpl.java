@@ -1,7 +1,7 @@
 package com.myz.wxapp.wxappserver.dubbo.service;
 
 import com.myz.wxapp.ticket.service.TicketService;
-import com.myz.wxapp.wxappserver.dubbo.api.DemoService;
+import com.myz.wxapp.api.DemoService;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
