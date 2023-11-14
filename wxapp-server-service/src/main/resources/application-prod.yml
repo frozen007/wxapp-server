@@ -4,3 +4,17 @@ dubbo:
   protocol:
     name: tri
     port: 5050
+
+database:
+  common:
+    validationQuery: SELECT 1
+
+  dbuser:
+    username: wxapp
+    password: wxapp1234
+    url: jdbc:mariadb://mariadb-0.mariadb.mariadb:3306/wxapp
+    driverClassName: org.mariadb.jdbc.Driver
+    initialSize: 0
+    maxTotal: 4
+    maxIdle: 4
+    minIdle: 0
