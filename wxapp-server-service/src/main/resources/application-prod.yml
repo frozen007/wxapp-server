@@ -1,7 +1,6 @@
 dubbo:
   registry:
-    #address: zookeeper://${zookeeper.address:127.0.0.1}:2181
-    address: zookeeper://zookeeper-0.zk-inner-service.default.svc.cluster.local:2181/dubbo3
+    address: zookeeper://zookeeper-0.zk-inner-service.default.svc.cluster.local:2181/dubbo
   protocol:
     name: tri
     port: 5050
