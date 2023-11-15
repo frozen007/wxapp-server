@@ -23,7 +23,7 @@ import java.util.Properties;
  * Date 2020/12/3 20:13
  */
 @Configuration
-@MapperScan({"com.myz.wxapp.user.dao","com.myz.wxapp.ticket.dao"})
+@MapperScan({"com.myz.wxapp.user.dao","com.myz.wxapp.task.dao","com.myz.wxapp.ticket.dao"})
 @ComponentScan("com.myz.inf.datasource")
 public class DBConfiguration {
 
