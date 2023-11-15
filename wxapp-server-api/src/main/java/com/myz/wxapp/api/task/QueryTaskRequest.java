@@ -4,82 +4,60 @@
 package com.myz.wxapp.api.task;
 
 /**
- * Protobuf type {@code task.TaskExecution}
+ * Protobuf type {@code task.QueryTaskRequest}
  */
-public final class TaskExecution extends
+public final class QueryTaskRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:task.TaskExecution)
-    TaskExecutionOrBuilder {
+    // @@protoc_insertion_point(message_implements:task.QueryTaskRequest)
+    QueryTaskRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TaskExecution.newBuilder() to construct.
-  private TaskExecution(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use QueryTaskRequest.newBuilder() to construct.
+  private QueryTaskRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TaskExecution() {
+  private QueryTaskRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new TaskExecution();
+    return new QueryTaskRequest();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.myz.wxapp.api.task.TaskProto.internal_static_task_TaskExecution_descriptor;
+    return com.myz.wxapp.api.task.TaskProto.internal_static_task_QueryTaskRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.myz.wxapp.api.task.TaskProto.internal_static_task_TaskExecution_fieldAccessorTable
+    return com.myz.wxapp.api.task.TaskProto.internal_static_task_QueryTaskRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.myz.wxapp.api.task.TaskExecution.class, com.myz.wxapp.api.task.TaskExecution.Builder.class);
+            com.myz.wxapp.api.task.QueryTaskRequest.class, com.myz.wxapp.api.task.QueryTaskRequest.Builder.class);
   }
 
-  public static final int EXECTYPE_FIELD_NUMBER = 1;
-  private int execType_ = 0;
+  public static final int USERID_FIELD_NUMBER = 1;
+  private long userId_ = 0L;
   /**
-   * <code>int32 execType = 1;</code>
-   * @return The execType.
+   * <code>int64 userId = 1;</code>
+   * @return The userId.
    */
   @java.lang.Override
-  public int getExecType() {
-    return execType_;
+  public long getUserId() {
+    return userId_;
   }
 
-  public static final int PERIODTYPE_FIELD_NUMBER = 2;
-  private int periodType_ = 0;
+  public static final int STATUS_FIELD_NUMBER = 2;
+  private int status_ = 0;
   /**
-   * <code>int32 periodType = 2;</code>
-   * @return The periodType.
+   * <code>int32 status = 2;</code>
+   * @return The status.
    */
   @java.lang.Override
-  public int getPeriodType() {
-    return periodType_;
-  }
-
-  public static final int FIRETIME_FIELD_NUMBER = 3;
-  private long fireTime_ = 0L;
-  /**
-   * <code>int64 fireTime = 3;</code>
-   * @return The fireTime.
-   */
-  @java.lang.Override
-  public long getFireTime() {
-    return fireTime_;
-  }
-
-  public static final int NEXTFIRETIME_FIELD_NUMBER = 4;
-  private long nextFireTime_ = 0L;
-  /**
-   * <code>int64 nextFireTime = 4;</code>
-   * @return The nextFireTime.
-   */
-  @java.lang.Override
-  public long getNextFireTime() {
-    return nextFireTime_;
+  public int getStatus() {
+    return status_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -96,17 +74,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (execType_ != 0) {
-      output.writeInt32(1, execType_);
+    if (userId_ != 0L) {
+      output.writeInt64(1, userId_);
     }
-    if (periodType_ != 0) {
-      output.writeInt32(2, periodType_);
-    }
-    if (fireTime_ != 0L) {
-      output.writeInt64(3, fireTime_);
-    }
-    if (nextFireTime_ != 0L) {
-      output.writeInt64(4, nextFireTime_);
+    if (status_ != 0) {
+      output.writeInt32(2, status_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -117,21 +89,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (execType_ != 0) {
+    if (userId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, execType_);
+        .computeInt64Size(1, userId_);
     }
-    if (periodType_ != 0) {
+    if (status_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, periodType_);
-    }
-    if (fireTime_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, fireTime_);
-    }
-    if (nextFireTime_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, nextFireTime_);
+        .computeInt32Size(2, status_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -143,19 +107,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.myz.wxapp.api.task.TaskExecution)) {
+    if (!(obj instanceof com.myz.wxapp.api.task.QueryTaskRequest)) {
       return super.equals(obj);
     }
-    com.myz.wxapp.api.task.TaskExecution other = (com.myz.wxapp.api.task.TaskExecution) obj;
+    com.myz.wxapp.api.task.QueryTaskRequest other = (com.myz.wxapp.api.task.QueryTaskRequest) obj;
 
-    if (getExecType()
-        != other.getExecType()) return false;
-    if (getPeriodType()
-        != other.getPeriodType()) return false;
-    if (getFireTime()
-        != other.getFireTime()) return false;
-    if (getNextFireTime()
-        != other.getNextFireTime()) return false;
+    if (getUserId()
+        != other.getUserId()) return false;
+    if (getStatus()
+        != other.getStatus()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -167,84 +127,79 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + EXECTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getExecType();
-    hash = (37 * hash) + PERIODTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getPeriodType();
-    hash = (37 * hash) + FIRETIME_FIELD_NUMBER;
+    hash = (37 * hash) + USERID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getFireTime());
-    hash = (37 * hash) + NEXTFIRETIME_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getNextFireTime());
+        getUserId());
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(byte[] data)
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(java.io.InputStream input)
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseDelimitedFrom(java.io.InputStream input)
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseDelimitedFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.myz.wxapp.api.task.TaskExecution parseFrom(
+  public static com.myz.wxapp.api.task.QueryTaskRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -257,7 +212,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.myz.wxapp.api.task.TaskExecution prototype) {
+  public static Builder newBuilder(com.myz.wxapp.api.task.QueryTaskRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -273,26 +228,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code task.TaskExecution}
+   * Protobuf type {@code task.QueryTaskRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:task.TaskExecution)
-      com.myz.wxapp.api.task.TaskExecutionOrBuilder {
+      // @@protoc_insertion_point(builder_implements:task.QueryTaskRequest)
+      com.myz.wxapp.api.task.QueryTaskRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.myz.wxapp.api.task.TaskProto.internal_static_task_TaskExecution_descriptor;
+      return com.myz.wxapp.api.task.TaskProto.internal_static_task_QueryTaskRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.myz.wxapp.api.task.TaskProto.internal_static_task_TaskExecution_fieldAccessorTable
+      return com.myz.wxapp.api.task.TaskProto.internal_static_task_QueryTaskRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.myz.wxapp.api.task.TaskExecution.class, com.myz.wxapp.api.task.TaskExecution.Builder.class);
+              com.myz.wxapp.api.task.QueryTaskRequest.class, com.myz.wxapp.api.task.QueryTaskRequest.Builder.class);
     }
 
-    // Construct using com.myz.wxapp.api.task.TaskExecution.newBuilder()
+    // Construct using com.myz.wxapp.api.task.QueryTaskRequest.newBuilder()
     private Builder() {
 
     }
@@ -306,27 +261,25 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      execType_ = 0;
-      periodType_ = 0;
-      fireTime_ = 0L;
-      nextFireTime_ = 0L;
+      userId_ = 0L;
+      status_ = 0;
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.myz.wxapp.api.task.TaskProto.internal_static_task_TaskExecution_descriptor;
+      return com.myz.wxapp.api.task.TaskProto.internal_static_task_QueryTaskRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.myz.wxapp.api.task.TaskExecution getDefaultInstanceForType() {
-      return com.myz.wxapp.api.task.TaskExecution.getDefaultInstance();
+    public com.myz.wxapp.api.task.QueryTaskRequest getDefaultInstanceForType() {
+      return com.myz.wxapp.api.task.QueryTaskRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.myz.wxapp.api.task.TaskExecution build() {
-      com.myz.wxapp.api.task.TaskExecution result = buildPartial();
+    public com.myz.wxapp.api.task.QueryTaskRequest build() {
+      com.myz.wxapp.api.task.QueryTaskRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -334,52 +287,40 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.myz.wxapp.api.task.TaskExecution buildPartial() {
-      com.myz.wxapp.api.task.TaskExecution result = new com.myz.wxapp.api.task.TaskExecution(this);
+    public com.myz.wxapp.api.task.QueryTaskRequest buildPartial() {
+      com.myz.wxapp.api.task.QueryTaskRequest result = new com.myz.wxapp.api.task.QueryTaskRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.myz.wxapp.api.task.TaskExecution result) {
+    private void buildPartial0(com.myz.wxapp.api.task.QueryTaskRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.execType_ = execType_;
+        result.userId_ = userId_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.periodType_ = periodType_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.fireTime_ = fireTime_;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.nextFireTime_ = nextFireTime_;
+        result.status_ = status_;
       }
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.myz.wxapp.api.task.TaskExecution) {
-        return mergeFrom((com.myz.wxapp.api.task.TaskExecution)other);
+      if (other instanceof com.myz.wxapp.api.task.QueryTaskRequest) {
+        return mergeFrom((com.myz.wxapp.api.task.QueryTaskRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.myz.wxapp.api.task.TaskExecution other) {
-      if (other == com.myz.wxapp.api.task.TaskExecution.getDefaultInstance()) return this;
-      if (other.getExecType() != 0) {
-        setExecType(other.getExecType());
+    public Builder mergeFrom(com.myz.wxapp.api.task.QueryTaskRequest other) {
+      if (other == com.myz.wxapp.api.task.QueryTaskRequest.getDefaultInstance()) return this;
+      if (other.getUserId() != 0L) {
+        setUserId(other.getUserId());
       }
-      if (other.getPeriodType() != 0) {
-        setPeriodType(other.getPeriodType());
-      }
-      if (other.getFireTime() != 0L) {
-        setFireTime(other.getFireTime());
-      }
-      if (other.getNextFireTime() != 0L) {
-        setNextFireTime(other.getNextFireTime());
+      if (other.getStatus() != 0) {
+        setStatus(other.getStatus());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -408,25 +349,15 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              execType_ = input.readInt32();
+              userId_ = input.readInt64();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
             case 16: {
-              periodType_ = input.readInt32();
+              status_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
             } // case 16
-            case 24: {
-              fireTime_ = input.readInt64();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 32: {
-              nextFireTime_ = input.readInt64();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -444,130 +375,66 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private int execType_ ;
+    private long userId_ ;
     /**
-     * <code>int32 execType = 1;</code>
-     * @return The execType.
+     * <code>int64 userId = 1;</code>
+     * @return The userId.
      */
     @java.lang.Override
-    public int getExecType() {
-      return execType_;
+    public long getUserId() {
+      return userId_;
     }
     /**
-     * <code>int32 execType = 1;</code>
-     * @param value The execType to set.
+     * <code>int64 userId = 1;</code>
+     * @param value The userId to set.
      * @return This builder for chaining.
      */
-    public Builder setExecType(int value) {
+    public Builder setUserId(long value) {
 
-      execType_ = value;
+      userId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 execType = 1;</code>
+     * <code>int64 userId = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearExecType() {
+    public Builder clearUserId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      execType_ = 0;
+      userId_ = 0L;
       onChanged();
       return this;
     }
 
-    private int periodType_ ;
+    private int status_ ;
     /**
-     * <code>int32 periodType = 2;</code>
-     * @return The periodType.
+     * <code>int32 status = 2;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public int getPeriodType() {
-      return periodType_;
+    public int getStatus() {
+      return status_;
     }
     /**
-     * <code>int32 periodType = 2;</code>
-     * @param value The periodType to set.
+     * <code>int32 status = 2;</code>
+     * @param value The status to set.
      * @return This builder for chaining.
      */
-    public Builder setPeriodType(int value) {
+    public Builder setStatus(int value) {
 
-      periodType_ = value;
+      status_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 periodType = 2;</code>
+     * <code>int32 status = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearPeriodType() {
+    public Builder clearStatus() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      periodType_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private long fireTime_ ;
-    /**
-     * <code>int64 fireTime = 3;</code>
-     * @return The fireTime.
-     */
-    @java.lang.Override
-    public long getFireTime() {
-      return fireTime_;
-    }
-    /**
-     * <code>int64 fireTime = 3;</code>
-     * @param value The fireTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFireTime(long value) {
-
-      fireTime_ = value;
-      bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 fireTime = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearFireTime() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      fireTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long nextFireTime_ ;
-    /**
-     * <code>int64 nextFireTime = 4;</code>
-     * @return The nextFireTime.
-     */
-    @java.lang.Override
-    public long getNextFireTime() {
-      return nextFireTime_;
-    }
-    /**
-     * <code>int64 nextFireTime = 4;</code>
-     * @param value The nextFireTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNextFireTime(long value) {
-
-      nextFireTime_ = value;
-      bitField0_ |= 0x00000008;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 nextFireTime = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearNextFireTime() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      nextFireTime_ = 0L;
+      status_ = 0;
       onChanged();
       return this;
     }
@@ -584,23 +451,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:task.TaskExecution)
+    // @@protoc_insertion_point(builder_scope:task.QueryTaskRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:task.TaskExecution)
-  private static final com.myz.wxapp.api.task.TaskExecution DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:task.QueryTaskRequest)
+  private static final com.myz.wxapp.api.task.QueryTaskRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.myz.wxapp.api.task.TaskExecution();
+    DEFAULT_INSTANCE = new com.myz.wxapp.api.task.QueryTaskRequest();
   }
 
-  public static com.myz.wxapp.api.task.TaskExecution getDefaultInstance() {
+  public static com.myz.wxapp.api.task.QueryTaskRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TaskExecution>
-      PARSER = new com.google.protobuf.AbstractParser<TaskExecution>() {
+  private static final com.google.protobuf.Parser<QueryTaskRequest>
+      PARSER = new com.google.protobuf.AbstractParser<QueryTaskRequest>() {
     @java.lang.Override
-    public TaskExecution parsePartialFrom(
+    public QueryTaskRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -619,17 +486,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<TaskExecution> parser() {
+  public static com.google.protobuf.Parser<QueryTaskRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TaskExecution> getParserForType() {
+  public com.google.protobuf.Parser<QueryTaskRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.myz.wxapp.api.task.TaskExecution getDefaultInstanceForType() {
+  public com.myz.wxapp.api.task.QueryTaskRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

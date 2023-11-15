@@ -1,8 +1,11 @@
 package com.myz.wxapp.task.service;
 
+import com.myz.wxapp.api.task.CreateTaskReply;
 import com.myz.wxapp.api.task.CreateTaskRequest;
+import com.myz.wxapp.api.task.DubboTaskServiceTriple;
+import com.myz.wxapp.api.task.QueryTaskRequest;
+import com.myz.wxapp.api.task.QueryTaskResult;
 import com.myz.wxapp.api.task.TaskExecution;
-import com.myz.wxapp.api.task.TaskService;
 import com.myz.wxapp.api.task.UserTask;
 import com.myz.wxapp.task.dao.UserTaskExecutionDao;
 import com.myz.wxapp.task.dao.UserTaskRecordDao;
@@ -25,7 +28,7 @@ import java.util.stream.Collectors;
  * @description:
  */
 @DubboService
-public class TaskServiceImpl implements TaskService {
+public class TaskServiceImpl extends DubboTaskServiceTriple.TaskServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(TaskServiceImpl.class);
 
@@ -36,12 +39,19 @@ public class TaskServiceImpl implements TaskService {
     private UserTaskExecutionDao userTaskExecutionDao;
 
     @Override
-    public Long createTask(CreateTaskRequest request) {
-        return null;
+    public CreateTaskReply createTask(CreateTaskRequest request) {
+
+        return CreateTaskReply.newBuilder().setTaskId(0L).build();
     }
 
     @Override
-    public List<UserTask> queryTask(Long userId, Integer status) {
+    public QueryTaskResult queryTask(QueryTaskRequest request) {
+        List<UserTask> userTasks = getUserTasks(request.getUserId(), request.getStatus());
+        QueryTaskResult result = QueryTaskResult.newBuilder().addAllTasks(userTasks).setLength(userTasks.size()).build();
+        return result;
+    }
+
+    private List<UserTask> getUserTasks(long userId, int status) {
         logger.info("userId={}, status={}", userId, status);
         List<UserTaskExecution> userTaskExecutions = userTaskExecutionDao.queryUserTaskExecutions(userId);
 
@@ -56,7 +66,7 @@ public class TaskServiceImpl implements TaskService {
         List<UserTask> userTasks;
         List<UserTaskRecord> userTaskRecords = userTaskRecordDao.queryUserTaskRecords(userId);
         if (userTaskRecords != null && !userTaskRecords.isEmpty()) {
-            userTasks = userTaskRecords.stream().filter(t -> status == null ? true : status == t.getStatus()).map(t ->
+            userTasks = userTaskRecords.stream().filter(t -> status == 0 ? true : status == t.getStatus()).map(t ->
                     convertToUserTask(t, taskExecutionMap)
             ).collect(Collectors.toList());
         } else {
@@ -68,25 +78,25 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private UserTask convertToUserTask(UserTaskRecord userTaskRecord, Map<Long, UserTaskExecution> taskExecutionMap) {
-        UserTask userTask = new UserTask();
-        userTask.setId(userTaskRecord.getId());
-        userTask.setUserId(userTaskRecord.getUserId());
-        userTask.setName(userTaskRecord.getName());
-        userTask.setDescription(userTaskRecord.getDescription());
-        userTask.setStatus(userTaskRecord.getStatus());
-        userTask.setTaskType(userTaskRecord.getTaskType());
-        userTask.setCreateTime(userTaskRecord.getCreationTime());
+        UserTaskExecution userTaskExecution = taskExecutionMap.get(userTaskRecord.getId());
+        UserTask.Builder builder = UserTask.newBuilder()
+                .setId(userTaskRecord.getId())
+                .setUserId(userTaskRecord.getUserId())
+                .setName(userTaskRecord.getName())
+                .setDescription(userTaskRecord.getDescription())
+                .setStatus(userTaskRecord.getStatus())
+                .setTaskType(userTaskRecord.getTaskType())
+                .setCreateTime(userTaskRecord.getCreationTime());
 
-        UserTaskExecution userTaskExecution = taskExecutionMap.get(userTask.getId());
         if (userTaskExecution != null) {
-            TaskExecution taskExecution = new TaskExecution();
-            taskExecution.setExecType(userTaskExecution.getExecType());
-            taskExecution.setPeriodType(userTaskExecution.getPeriodType());
-            taskExecution.setFireTime(userTaskExecution.getFireTime());
-            taskExecution.setNextFireTime(userTaskExecution.getNextFireTime());
-            userTask.setExecution(taskExecution);
+            TaskExecution taskExecution = TaskExecution.newBuilder()
+                    .setExecType(userTaskExecution.getExecType())
+                    .setPeriodType(userTaskExecution.getPeriodType())
+                    .setFireTime(userTaskExecution.getFireTime())
+                    .setNextFireTime(userTaskExecution.getNextFireTime()).build();
+            builder.setExecution(taskExecution);
         }
 
-        return userTask;
+        return builder.build();
     }
 }

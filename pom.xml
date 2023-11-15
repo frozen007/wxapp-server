@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dubbo.version>3.2.7</dubbo.version>
+        <protoc.version>3.22.3</protoc.version>
         <spring-boot.version>3.1.5</spring-boot.version>
         <zookeeper_version>3.9.1</zookeeper_version>
     </properties>
