@@ -2,10 +2,10 @@ package com.myz.wxapp.task.service;
 
 import com.myz.wxapp.api.task.CreateTaskReply;
 import com.myz.wxapp.api.task.CreateTaskRequest;
-import com.myz.wxapp.api.task.DubboTaskServiceTriple;
 import com.myz.wxapp.api.task.QueryTaskRequest;
 import com.myz.wxapp.api.task.QueryTaskResult;
 import com.myz.wxapp.api.task.TaskExecution;
+import com.myz.wxapp.api.task.TaskService;
 import com.myz.wxapp.api.task.UserTask;
 import com.myz.wxapp.task.dao.UserTaskExecutionDao;
 import com.myz.wxapp.task.dao.UserTaskRecordDao;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @description:
  */
 @DubboService
-public class TaskServiceImpl extends DubboTaskServiceTriple.TaskServiceImplBase {
+public class TaskServiceImpl implements TaskService {
 
     private static final Logger logger = LoggerFactory.getLogger(TaskServiceImpl.class);
 
