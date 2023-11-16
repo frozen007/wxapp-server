@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -63,6 +64,7 @@ public class DBConfiguration {
     public SqlSessionFactory createSqlSessionFactory(DataSource multiDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(multiDataSource);
+        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis/mybatis-config.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 }

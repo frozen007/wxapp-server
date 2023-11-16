@@ -41,7 +41,34 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public CreateTaskReply createTask(CreateTaskRequest request) {
 
-        return CreateTaskReply.newBuilder().setTaskId(0L).build();
+        UserTaskRecord userTaskRecord = new UserTaskRecord();
+        userTaskRecord.setUserId(request.getUserId());
+        userTaskRecord.setName(request.getName());
+        userTaskRecord.setDescription(request.getDescription());
+        userTaskRecord.setStatus(1);
+        userTaskRecord.setTaskType(request.getTaskType());
+        userTaskRecord.setPayLoad("{}");
+        userTaskRecord.setValid(1);
+        long currentTimeMillis = System.currentTimeMillis();
+        userTaskRecord.setCreationTime(currentTimeMillis);
+        userTaskRecord.setUpdateTime(currentTimeMillis);
+
+        userTaskRecordDao.insertUserTaskRecord(userTaskRecord);
+        long newTaskId = userTaskRecord.getId();
+
+        UserTaskExecution userTaskExecution = new UserTaskExecution();
+        userTaskExecution.setUserId(request.getUserId());
+        userTaskExecution.setTaskId(newTaskId);
+        userTaskExecution.setExecType(request.getExecType());
+        userTaskExecution.setPeriodType(request.getPeriodType());
+        userTaskExecution.setFireTime(request.getFireTime());
+        userTaskExecution.setNextFireTime(request.getFireTime());
+        userTaskExecution.setValid(1);
+        userTaskExecution.setCreationTime(currentTimeMillis);
+        userTaskExecution.setUpdateTime(currentTimeMillis);
+        userTaskExecutionDao.insertUserTaskExecution(userTaskExecution);
+
+        return CreateTaskReply.newBuilder().setTaskId(newTaskId).build();
     }
 
     @Override

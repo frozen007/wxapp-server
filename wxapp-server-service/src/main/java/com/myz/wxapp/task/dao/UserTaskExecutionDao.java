@@ -19,6 +19,8 @@ import java.util.List;
 @DataSource("dbuser")
 public interface UserTaskExecutionDao {
 
+    long insertUserTaskExecution(UserTaskExecution userTaskExecution);
+
     @Results({
             @Result(property = "id", column = "id", id = true),
             @Result(property = "taskId", column = "task_id"),

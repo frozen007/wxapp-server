@@ -1,4 +1,4 @@
-package com.myz.wxapp.wxappserver.dubbo.service;
+package com.myz.wxapp.demo;
 
 import com.myz.wxapp.ticket.service.TicketService;
 import com.myz.wxapp.api.DemoService;

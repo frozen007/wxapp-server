@@ -2,6 +2,7 @@ package com.myz.wxapp.task.dao;
 
 import com.myz.inf.datasource.DataSource;
 import com.myz.wxapp.task.entity.UserTaskRecord;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -18,6 +19,8 @@ import java.util.List;
 @Repository
 @DataSource("dbuser")
 public interface UserTaskRecordDao {
+
+    long insertUserTaskRecord(UserTaskRecord userTaskRecord);
 
     @Results({
             @Result(property = "id", column = "id", id = true),
@@ -36,4 +39,6 @@ public interface UserTaskRecordDao {
             "where user_id=#{user_id} and valid=1 " +
             "order by creation_time desc")
     List<UserTaskRecord> queryUserTaskRecords(@Param("user_id") Long userId);
+
+
 }
