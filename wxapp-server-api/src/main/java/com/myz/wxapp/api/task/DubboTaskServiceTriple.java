@@ -92,6 +92,21 @@ public final class DubboTaskServiceTriple {
     obj -> ((Message) obj).toByteArray(), obj -> ((Message) obj).toByteArray(), com.myz.wxapp.api.task.QueryTaskRequest::parseFrom,
     com.myz.wxapp.api.task.QueryTaskResult::parseFrom);
 
+    private static final StubMethodDescriptor cancelTaskMethod = new StubMethodDescriptor("cancelTask",
+    com.myz.wxapp.api.task.CancelTaskRequest.class, com.myz.wxapp.api.task.CancelTaskReply.class, serviceDescriptor, MethodDescriptor.RpcType.UNARY,
+    obj -> ((Message) obj).toByteArray(), obj -> ((Message) obj).toByteArray(), com.myz.wxapp.api.task.CancelTaskRequest::parseFrom,
+    com.myz.wxapp.api.task.CancelTaskReply::parseFrom);
+
+    private static final StubMethodDescriptor cancelTaskAsyncMethod = new StubMethodDescriptor("cancelTask",
+    com.myz.wxapp.api.task.CancelTaskRequest.class, java.util.concurrent.CompletableFuture.class, serviceDescriptor, MethodDescriptor.RpcType.UNARY,
+    obj -> ((Message) obj).toByteArray(), obj -> ((Message) obj).toByteArray(), com.myz.wxapp.api.task.CancelTaskRequest::parseFrom,
+    com.myz.wxapp.api.task.CancelTaskReply::parseFrom);
+
+    private static final StubMethodDescriptor cancelTaskProxyAsyncMethod = new StubMethodDescriptor("cancelTaskAsync",
+    com.myz.wxapp.api.task.CancelTaskRequest.class, com.myz.wxapp.api.task.CancelTaskReply.class, serviceDescriptor, MethodDescriptor.RpcType.UNARY,
+    obj -> ((Message) obj).toByteArray(), obj -> ((Message) obj).toByteArray(), com.myz.wxapp.api.task.CancelTaskRequest::parseFrom,
+    com.myz.wxapp.api.task.CancelTaskReply::parseFrom);
+
 
 
 
@@ -129,6 +144,19 @@ public final class DubboTaskServiceTriple {
         public void queryTask(com.myz.wxapp.api.task.QueryTaskRequest request, StreamObserver<com.myz.wxapp.api.task.QueryTaskResult> responseObserver){
             StubInvocationUtil.unaryCall(invoker, queryTaskMethod , request, responseObserver);
         }
+        @Override
+        public com.myz.wxapp.api.task.CancelTaskReply cancelTask(com.myz.wxapp.api.task.CancelTaskRequest request){
+            return StubInvocationUtil.unaryCall(invoker, cancelTaskMethod, request);
+        }
+
+        public CompletableFuture<com.myz.wxapp.api.task.CancelTaskReply> cancelTaskAsync(com.myz.wxapp.api.task.CancelTaskRequest request){
+            return StubInvocationUtil.unaryCall(invoker, cancelTaskAsyncMethod, request);
+        }
+
+        @Override
+        public void cancelTask(com.myz.wxapp.api.task.CancelTaskRequest request, StreamObserver<com.myz.wxapp.api.task.CancelTaskReply> responseObserver){
+            StubInvocationUtil.unaryCall(invoker, cancelTaskMethod , request, responseObserver);
+        }
 
 
 
@@ -162,6 +190,8 @@ public final class DubboTaskServiceTriple {
             pathResolver.addNativeStub( "/" + SERVICE_NAME + "/createTaskAsync" );
             pathResolver.addNativeStub( "/" + SERVICE_NAME + "/queryTask" );
             pathResolver.addNativeStub( "/" + SERVICE_NAME + "/queryTaskAsync" );
+            pathResolver.addNativeStub( "/" + SERVICE_NAME + "/cancelTask" );
+            pathResolver.addNativeStub( "/" + SERVICE_NAME + "/cancelTaskAsync" );
 
             BiConsumer<com.myz.wxapp.api.task.CreateTaskRequest, StreamObserver<com.myz.wxapp.api.task.CreateTaskReply>> createTaskFunc = this::createTask;
             handlers.put(createTaskMethod.getMethodName(), new UnaryStubMethodHandler<>(createTaskFunc));
@@ -171,6 +201,10 @@ public final class DubboTaskServiceTriple {
             handlers.put(queryTaskMethod.getMethodName(), new UnaryStubMethodHandler<>(queryTaskFunc));
             BiConsumer<com.myz.wxapp.api.task.QueryTaskRequest, StreamObserver<com.myz.wxapp.api.task.QueryTaskResult>> queryTaskAsyncFunc = syncToAsync(this::queryTask);
             handlers.put(queryTaskProxyAsyncMethod.getMethodName(), new UnaryStubMethodHandler<>(queryTaskAsyncFunc));
+            BiConsumer<com.myz.wxapp.api.task.CancelTaskRequest, StreamObserver<com.myz.wxapp.api.task.CancelTaskReply>> cancelTaskFunc = this::cancelTask;
+            handlers.put(cancelTaskMethod.getMethodName(), new UnaryStubMethodHandler<>(cancelTaskFunc));
+            BiConsumer<com.myz.wxapp.api.task.CancelTaskRequest, StreamObserver<com.myz.wxapp.api.task.CancelTaskReply>> cancelTaskAsyncFunc = syncToAsync(this::cancelTask);
+            handlers.put(cancelTaskProxyAsyncMethod.getMethodName(), new UnaryStubMethodHandler<>(cancelTaskAsyncFunc));
 
 
 
@@ -187,6 +221,11 @@ public final class DubboTaskServiceTriple {
         @Override
         public com.myz.wxapp.api.task.QueryTaskResult queryTask(com.myz.wxapp.api.task.QueryTaskRequest request){
             throw unimplementedMethodException(queryTaskMethod);
+        }
+
+        @Override
+        public com.myz.wxapp.api.task.CancelTaskReply cancelTask(com.myz.wxapp.api.task.CancelTaskRequest request){
+            throw unimplementedMethodException(cancelTaskMethod);
         }
 
 

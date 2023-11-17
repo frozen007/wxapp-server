@@ -1,6 +1,5 @@
 package com.myz.wxapp.server;
 
-import com.myz.wxapp.api.DemoService;
 import com.myz.wxapp.api.task.CreateTaskReply;
 import com.myz.wxapp.api.task.CreateTaskRequest;
 import com.myz.wxapp.api.task.QueryTaskRequest;
@@ -25,8 +24,6 @@ public class TestTaskService {
 
     private ReferenceConfig<TaskService> taskServiceRef;
 
-    private ReferenceConfig<DemoService> demoServiceRef;
-
     private TaskService taskService;
 
     @BeforeAll
@@ -36,6 +33,7 @@ public class TestTaskService {
         taskServiceRef.setInterface(TaskService.class);
         taskServiceRef.setUrl("tri://127.0.0.1:5050/com.myz.wxapp.api.task.TaskService");
         taskServiceRef.setCluster("failfast");
+        taskServiceRef.setRetries(0);
 
         ApplicationConfig applicationConfig = new ApplicationConfig("test-TaskService");
         applicationConfig.setQosEnable(false);
@@ -43,7 +41,6 @@ public class TestTaskService {
                 .application(applicationConfig)
 //                .registry(new RegistryConfig("zookeeper://127.0.0.1:2181/dubbo"))
                 .reference(taskServiceRef)
-                .reference(demoServiceRef)
                 .start();
 
         taskService = taskServiceRef.get();
@@ -61,12 +58,12 @@ public class TestTaskService {
     public void testCreateTask() {
         CreateTaskReply createTaskReply = taskService.createTask(CreateTaskRequest.newBuilder()
                 .setUserId(1L)
-                .setName("test-task05")
-                .setDescription("task05 desc")
+                .setName("test-task08")
+                .setDescription("task08 desc")
                 .setTaskType(1)
                 .setExecType(1)
                 .setPeriodType(0)
-                .setFireTime(System.currentTimeMillis())
+                .setFireTime(System.currentTimeMillis()+60000)
                 .build());
 
         System.out.println(createTaskReply.getTaskId());

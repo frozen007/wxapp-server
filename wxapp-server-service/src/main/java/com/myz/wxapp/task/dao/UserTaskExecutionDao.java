@@ -33,9 +33,11 @@ public interface UserTaskExecutionDao {
             @Result(property = "creationTime", column = "creation_time"),
             @Result(property = "updateTime", column = "update_time")
     })
-    @Select("select id, task_id, user_id, exec_type, period_type, fire_time, next_fire_time, valid, creation_time, update_time " +
-            "from user_task_execution " +
-            "where user_id=#{user_id} and valid=1 ")
+    @Select("""
+            select id, task_id, user_id, exec_type, period_type, fire_time, next_fire_time, valid, creation_time, update_time
+            from user_task_execution
+            where user_id=#{user_id} and valid=1
+            """)
     List<UserTaskExecution> queryUserTaskExecutions(@Param("user_id") Long userId);
 
 }

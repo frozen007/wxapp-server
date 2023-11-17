@@ -44,6 +44,16 @@ public final class TaskProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_task_TaskExecution_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_task_CancelTaskRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_task_CancelTaskRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_task_CancelTaskReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_task_CancelTaskReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -67,12 +77,16 @@ public final class TaskProto {
       "me\030\007 \001(\003\022&\n\texecution\030\010 \001(\0132\023.task.TaskE" +
       "xecution\"]\n\rTaskExecution\022\020\n\010execType\030\001 " +
       "\001(\005\022\022\n\nperiodType\030\002 \001(\005\022\020\n\010fireTime\030\003 \001(" +
-      "\003\022\024\n\014nextFireTime\030\004 \001(\0032\207\001\n\013TaskService\022" +
+      "\003\022\024\n\014nextFireTime\030\004 \001(\003\"3\n\021CancelTaskReq" +
+      "uest\022\016\n\006userId\030\001 \001(\003\022\016\n\006taskId\030\002 \001(\003\"A\n\017" +
+      "CancelTaskReply\022\016\n\006userId\030\001 \001(\003\022\016\n\006taskI" +
+      "d\030\002 \001(\003\022\016\n\006status\030\003 \001(\0052\305\001\n\013TaskService\022" +
       "<\n\ncreateTask\022\027.task.CreateTaskRequest\032\025" +
       ".task.CreateTaskReply\022:\n\tqueryTask\022\026.tas" +
       "k.QueryTaskRequest\032\025.task.QueryTaskResul" +
-      "tB+\n\026com.myz.wxapp.api.taskB\tTaskProtoP\001" +
-      "\242\002\003HLWb\006proto3"
+      "t\022<\n\ncancelTask\022\027.task.CancelTaskRequest" +
+      "\032\025.task.CancelTaskReplyB+\n\026com.myz.wxapp" +
+      ".api.taskB\tTaskProtoP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -114,6 +128,18 @@ public final class TaskProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_task_TaskExecution_descriptor,
         new java.lang.String[] { "ExecType", "PeriodType", "FireTime", "NextFireTime", });
+    internal_static_task_CancelTaskRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_task_CancelTaskRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_task_CancelTaskRequest_descriptor,
+        new java.lang.String[] { "UserId", "TaskId", });
+    internal_static_task_CancelTaskReply_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_task_CancelTaskReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_task_CancelTaskReply_descriptor,
+        new java.lang.String[] { "UserId", "TaskId", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
